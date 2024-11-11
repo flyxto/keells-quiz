@@ -261,7 +261,7 @@ export default function LevelFour({
                 initial={{ opacity: 0, display: "none" }} // Initially, the component won't take up space
                 animate={{ opacity: 1, display: "flex" }} // After animation starts, it will be visible and take space
                 transition={{ duration: 0.5 }}
-                className="flex w-screen px-20 items-center gap-20 absolute top-10">
+                className="flex w-screen px-20 items-center gap-20 z-0 absolute top-10">
                 <div className="bg-white h-1 w-full rounded-full"></div>
                 <h1 className="text-white text-8xl font-semibold w-full text-center whitespace-nowrap shake">
                   {showAnswer ? "Answer is" : "Wrong Answer!"}

@@ -240,7 +240,7 @@ export default function Page() {
         {showMenu ? "X" : "V"}
       </button>
       {showMenu && (
-        <div className="bg-white absolute top-10 right-10 w-64 h-fit p-4 rounded-lg flex flex-col gap-4">
+        <div className="bg-white absolute z-30 top-10 right-10 w-64 h-fit p-4 rounded-lg flex flex-col gap-4">
           <button
             className="bg-red-500 text-white py-2 px-4 rounded-full active:scale-90 transition"
             onClick={reset}>
