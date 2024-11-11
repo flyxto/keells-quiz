@@ -104,6 +104,7 @@ export default function Page() {
     setStartLevelTwo(false);
     setShowCorrectAnswer(false);
     setShowAnswerIsWrong(false);
+    setIsTimeFinished(false);
   };
   const proceedLevelTwo = () => {
     setShowStartScreen(false);
@@ -116,6 +117,7 @@ export default function Page() {
     setStartLevelTwo(false);
     setShowCorrectAnswer(false);
     setShowAnswerIsWrong(false);
+    setIsTimeFinished(false);
   };
   const proceedLevelThree = () => {
     setShowStartScreen(false);
@@ -128,6 +130,7 @@ export default function Page() {
     setStartLevelTwo(false);
     setShowCorrectAnswer(false);
     setShowAnswerIsWrong(false);
+    setIsTimeFinished(false);
   };
   const proceedLevelFour = () => {
     setShowStartScreen(false);
@@ -143,6 +146,7 @@ export default function Page() {
     setPauseAnimation(false);
     setShowCorrectAnswer(false);
     setShowAnswerIsWrong(false);
+    setIsTimeFinished(false);
   };
   // ----------------------------
 
@@ -235,12 +239,12 @@ export default function Page() {
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <button
-        className="bg-white text-black py-2 px-4 rounded-full active:scale-90 transition absolute z-10 top-5 right-6"
+        className="bg-white text-black py-2 px-4 rounded-full active:scale-90 transition absolute z-30 top-5 right-6"
         onClick={toggleMenu}>
         {showMenu ? "X" : "V"}
       </button>
       {showMenu && (
-        <div className="bg-white absolute z-30 top-10 right-10 w-64 h-fit p-4 rounded-lg flex flex-col gap-4">
+        <div className="bg-white absolute z-20 top-10 right-10 w-64 h-fit p-4 rounded-lg flex flex-col gap-4">
           <button
             className="bg-red-500 text-white py-2 px-4 rounded-full active:scale-90 transition"
             onClick={reset}>
