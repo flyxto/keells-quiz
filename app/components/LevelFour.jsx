@@ -55,6 +55,8 @@ export default function LevelFour({
 
   const [showWrongAnswer, setShowWrongAnswer] = useState(false);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+  const [showYouAreCorrect, setShowYouAreCorrect] = useState(false);
+  const [showCorrectAnswerTwo, setShowCorrectAnswerTwo] = useState(false);
 
   useEffect(() => {
     if (isWrong) {
@@ -67,6 +69,18 @@ export default function LevelFour({
       return () => clearTimeout(timer); // Cleanup timeout if needed
     }
   }, [isWrong]);
+
+  useEffect(() => {
+    if (showAnswer) {
+      setShowYouAreCorrect(true); // Show wrong answer
+      const timer = setTimeout(() => {
+        setShowYouAreCorrect(false); // Hide wrong answer after 2 seconds
+        setShowCorrectAnswerTwo(true); // Show correct answer after 2 seconds
+      }, 2000);
+
+      return () => clearTimeout(timer); // Cleanup timeout if needed
+    }
+  }, [showAnswer]);
 
   // -----------------------------------
   const answerVariant = {
@@ -301,11 +315,11 @@ export default function LevelFour({
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                     className="flex w-screen px-20 items-center justify-center z-0 absolute top-10 text-center gap-20">
-                    <div className="bg-white h-1 w-full rounded-full"></div>
-                    <h1 className="text-white text-8xl font-semibold whitespace-nowrap shake">
+                    <div className="bg-red-500 h-1 w-full rounded-full"></div>
+                    <h1 className="text-red-500 text-8xl font-semibold whitespace-nowrap shake">
                       Bad Luck
                     </h1>
-                    <div className="bg-white h-1 w-full rounded-full"></div>
+                    <div className="bg-red-500 h-1 w-full rounded-full"></div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -326,22 +340,43 @@ export default function LevelFour({
                   </motion.div>
                 )}
               </AnimatePresence>
-              <AnimatePresence>
-                {showAnswer && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex w-screen px-20 items-center justify-center z-0 absolute top-10 text-center gap-20">
-                    <div className="bg-white h-1 w-full rounded-full"></div>
-                    <h1 className="text-white text-8xl font-semibold whitespace-nowrap">
-                      Correct answer is
-                    </h1>
-                    <div className="bg-white h-1 w-full rounded-full"></div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
+              {showAnswer && (
+                <>
+                  <AnimatePresence>
+                    {showYouAreCorrect && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex w-screen px-20 items-center justify-center z-0 absolute top-10 text-center gap-20">
+                        <div className="bg-white h-1 w-full rounded-full"></div>
+                        <h1 className="text-white text-8xl font-semibold whitespace-nowrap">
+                          Yes, You are correct
+                        </h1>
+                        <div className="bg-white h-1 w-full rounded-full"></div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  <AnimatePresence>
+                    {showCorrectAnswerTwo && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="flex w-screen px-20 items-center justify-center z-0 absolute top-10 text-center gap-20">
+                        <div className="bg-white h-1 w-full rounded-full"></div>
+                        <h1 className="text-white text-8xl font-semibold whitespace-nowrap">
+                          Answer is
+                        </h1>
+                        <div className="bg-white h-1 w-full rounded-full"></div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+              )}
             </div>
 
             <div className="translate-y-28">

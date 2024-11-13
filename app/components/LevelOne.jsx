@@ -113,11 +113,11 @@ export default function LevelOne({ levelOne, isActive, showAnswer, isWrong }) {
                   animate={{ opacity: 0, display: "none" }} // After animation starts, it will be visible and take space
                   transition={{ delay: 3 }}
                   className="flex w-screen px-20 items-center gap-20 absolute">
-                  <div className="bg-white h-1 w-full rounded-full"></div>
-                  <h1 className="text-white text-9xl font-semibold w-full text-center whitespace-nowrap shake">
-                    Wrong Answer!
+                  <div className="bg-red-500 h-1 w-full rounded-full"></div>
+                  <h1 className="text-red-500 text-9xl font-semibold w-full text-center whitespace-nowrap shake">
+                    Bad luck
                   </h1>
-                  <div className="bg-white h-1 w-full rounded-full"></div>
+                  <div className="bg-red-500 h-1 w-full rounded-full"></div>
                 </motion.div>
               </AnimatePresence>
               <AnimatePresence>
