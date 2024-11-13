@@ -64,6 +64,7 @@ export default function LevelTwo({
                   <Timer
                     isActive={isActive}
                     onTimeFinished={handleTimeFinished} // Pass callback to handle when the timer finishes
+                    appearDelay={2}
                   />
                 </>
               )}

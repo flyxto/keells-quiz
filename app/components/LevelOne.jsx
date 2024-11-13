@@ -51,6 +51,7 @@ export default function LevelOne({ levelOne, isActive, showAnswer, isWrong }) {
                   <Timer
                     isActive={isActive}
                     onTimeFinished={handleTimeFinished}
+                    appearDelay={1}
                   />
                 </>
               )}

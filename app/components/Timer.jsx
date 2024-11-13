@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-function Timer({ isActive, onTimeRemainingChange, onTimeFinished }) {
+function Timer({ isActive, onTimeRemainingChange, onTimeFinished, appearDelay }) {
   const [progress, setProgress] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(10); // Start countdown from 10 seconds
 
@@ -44,8 +44,7 @@ function Timer({ isActive, onTimeRemainingChange, onTimeFinished }) {
 
   return (
     <div
-      className="w-[1200px] absolute bottom-10 fade-in"
-      style={{ "--fade-delay": "2s" }}>
+      className="w-[1200px] absolute bottom-10 fade-in " style={{ "--fade-delay": `${appearDelay}s` }}>
       <div className="w-full border-4 border-white rounded-full p-3">
         <div className="h-4 w-full bg-green-500 rounded-full overflow-hidden">
           <div
