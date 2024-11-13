@@ -3,7 +3,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import LevelTwo from "./components/LevelTwo";
 import LevelThree from "./components/LevelThree";
 import LevelFour from "./components/LevelFour";
@@ -235,6 +235,35 @@ export default function Page() {
     const audio = new Audio("/wrong.wav"); // path to your audio file in public folder
     audio.play();
   };
+  //----------------------
+  // useEffect to set isActive to true after 3 seconds when showLevelOne is true
+  useEffect(() => {
+    let timer;
+    if (showLevelOne) {
+      timer = setTimeout(() => {
+        setIsActive(true);
+        playAudio();
+      }, 3500); // 3-second delay
+    } else {
+      // Reset isActive if showLevelOne is false
+      setIsActive(false);
+    }
+    return () => clearTimeout(timer); // Cleanup timeout on unmount or dependency change
+  }, [showLevelOne]);
+
+  useEffect(() => {
+    let timer;
+    if (showLevelThree) {
+      timer = setTimeout(() => {
+        setIsActive(true);
+        playAudio();
+      }, 3500); // 3-second delay
+    } else {
+      // Reset isActive if showLevelOne is false
+      setIsActive(false);
+    }
+    return () => clearTimeout(timer); // Cleanup timeout on unmount or dependency change
+  }, [showLevelThree]);
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
@@ -351,7 +380,7 @@ export default function Page() {
 
         {showLevelFour && (
           <>
-            <div className="bg-white absolute top-10 left-10 w-64 h-fit p-4 rounded-lg flex flex-col gap-4">
+            <div className="bg-white absolute z-30 top-10 left-10 w-64 h-fit p-4 rounded-lg flex flex-col gap-4">
               <select
                 name="lock"
                 id="lock"
