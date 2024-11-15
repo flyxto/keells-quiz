@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function LevelOne({ levelOne, isActive, showAnswer, isWrong }) {
   const correctWord = "GLOW&HANDSOME";
-  const jumbleWord = "HL&OGWNASMDEO";
+  const jumbleWord = "WH&NOADSMOGLE";
   const [firstPart, secondPart] = correctWord.split("&");
 
   const [imageAnimationFinished, setImageAnimationFinished] = useState(false);
@@ -71,16 +71,39 @@ export default function LevelOne({ levelOne, isActive, showAnswer, isWrong }) {
         <>
           {showAnswer ? (
             <>
-              <div className="flex w-screen px-20 items-center gap-20 -translate-y-20">
-                <div className="bg-white h-1 w-full rounded-full"></div>
-                <h1 className="text-white text-7xl font-semibold w-full text-center whitespace-nowrap shake">
-                  Correct Answer is
-                </h1>
-                <div className="bg-white h-1 w-full rounded-full"></div>
-              </div>
+              <AnimatePresence>
+                <motion.div
+                  initial={{ opacity: 1, display: "flex" }} // Initially, the component won't take up space
+                  animate={{ opacity: 0, display: "none" }} // After animation starts, it will be visible and take space
+                  transition={{ delay: 3 }}
+                  className="flex w-screen px-20 items-center gap-20 absolute">
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                  <h1 className="text-white text-9xl font-semibold w-full text-center whitespace-nowrap answer-scaleUpDown-animation">
+                    Yes, You are correct
+                  </h1>
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                </motion.div>
+              </AnimatePresence>
+              <AnimatePresence>
+                <motion.div
+                  initial={{ opacity: 0, display: "none" }} // Initially, the component won't take up space
+                  animate={{ opacity: 1, display: "flex" }} // After animation starts, it will be visible and take space
+                  transition={{ delay: 3 }}
+                  className="flex w-screen px-20 items-center justify-center text-center gap-20 absolute top-24">
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                  <h1 className="text-white text-8xl font-semibold   whitespace-nowrap ">
+                    Answer is
+                  </h1>
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                </motion.div>
+              </AnimatePresence>
               {correctWord === "GLOW&HANDSOME" ||
               correctWord === "GLOW&LOVELY" ? (
-                <div className="w-[1600px] flex flex-col flex-wrap gap-5 items-center appearAnimation">
+                <div
+                  className="w-[1600px] flex flex-col flex-wrap gap-5 items-center appearAnimation "
+                  style={{
+                    animationDelay: `${3.5}s`, // Applying the delay
+                  }}>
                   {/* Render first line with the `&` included */}
                   <div className="flex gap-4">
                     {firstPart.split("").map((char, index) => (
@@ -98,7 +121,7 @@ export default function LevelOne({ levelOne, isActive, showAnswer, isWrong }) {
               ) : (
                 // Other words
 
-                <div className="w-[1400px] flex flex-col gap-5 flex-wrap items-center appearAnimation">
+                <div className="w-[1400px] flex justify-center gap-5 flex-wrap items-center appearAnimation">
                   {correctWord.split("").map((char, index) => (
                     <Letter key={index} letter={char} index={index} />
                   ))}
