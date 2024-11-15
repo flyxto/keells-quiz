@@ -87,21 +87,35 @@ export default function LevelTwo({
             <>
               <AnimatePresence>
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 2 }}
-                  className="w-screen flex flex-col items-center">
-                  <div className="absolute flex flex-col justify-center items-center text-center gap-12">
-                    <div className="flex w-screen px-20 items-center gap-20 -translate-y-20">
-                      <div className="bg-white h-1 w-full rounded-full"></div>
-                      <h1 className="text-white text-7xl font-semibold w-full text-center whitespace-nowrap shake">
-                        Correct Answer is
-                      </h1>
-                      <div className="bg-white h-1 w-full rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="absolute z-10 bg-white w-96 h-96 rounded-[40px] p-2 mt-10">
+                  initial={{ opacity: 1, display: "flex" }} // Initially, the component won't take up space
+                  animate={{ opacity: 0, display: "none" }} // After animation starts, it will be visible and take space
+                  transition={{ delay: 3 }}
+                  className="flex w-screen px-20 items-center gap-20 absolute ">
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                  <h1 className="text-white text-9xl font-semibold w-full text-center whitespace-nowrap answer-scaleUpDown-animation">
+                    Yes, You are correct
+                  </h1>
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                </motion.div>
+              </AnimatePresence>
+              <AnimatePresence>
+                <motion.div
+                  initial={{ opacity: 0, display: "none" }} // Initially, the component won't take up space
+                  animate={{ opacity: 1, display: "flex" }} // After animation starts, it will be visible and take space
+                  transition={{ delay: 3 }}
+                  className="flex w-screen px-20 items-center justify-center text-center gap-20 absolute top-36">
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                  <h1 className="text-white text-8xl font-semibold   whitespace-nowrap">
+                    Answer is
+                  </h1>
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                </motion.div>
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0, display: "none" }}
+                    animate={{ opacity: 1, display: "flex" }}
+                    transition={{ delay: 4, duration: 1 }}
+                    className="absolute z-30 bg-white w-96 h-96 rounded-[40px] p-2 mt-10">
                     <div className=" border-4 border-green-600 w-full h-full rounded-[38px] flex justify-center items-center text-center">
                       <Image
                         src={"/images/full_image.png"}
@@ -111,20 +125,28 @@ export default function LevelTwo({
                         className="self-center"
                       />
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0, display: "none" }}
+                    animate={{ opacity: 1, display: "flex" }}
+                    transition={{ delay: 3 }}
+                    className="absolute z-20 bg-white w-96 h-96 rounded-[40px] p-2 mt-10">
+                    <div className=" border-4 border-green-600 w-full h-full rounded-[38px] flex justify-center items-center text-center">
+                      <Image
+                        src={"/images/half_image.png"}
+                        width={300}
+                        height={300}
+                        alt="level 2 image"
+                        className="self-center"
+                      />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* <div className="bg-white w-96 h-96 rounded-[40px] p-2 mt-10 "></div> */}
               </AnimatePresence>
-              <div className="bg-white w-96 h-96 rounded-[40px] p-2 mt-10 ">
-                <div className=" border-4 border-green-600 w-full h-full rounded-[38px] flex justify-center items-center text-center">
-                  <Image
-                    src={"/images/half_image.png"}
-                    width={300}
-                    height={300}
-                    alt="level 2 image"
-                    className="self-center"
-                  />
-                </div>
-              </div>
             </>
           ) : (
             <>
@@ -145,18 +167,20 @@ export default function LevelTwo({
                 <motion.div
                   initial={{ opacity: 0, display: "none" }} // Initially, the component won't take up space
                   animate={{ opacity: 1, display: "flex" }} // After animation starts, it will be visible and take space
-                  transition={{ delay: 4 }}
-                  className="flex-col items-center">
-                  <div className="absolute flex flex-col justify-center items-center text-center gap-12">
-                    <div className="flex w-screen px-20 items-center gap-20 -translate-y-20">
-                      <div className="bg-white h-1 w-full rounded-full"></div>
-                      <h1 className="text-white text-7xl font-semibold w-full text-center whitespace-nowrap shake">
-                        Correct Answer is
-                      </h1>
-                      <div className="bg-white h-1 w-full rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="absolute z-10 bg-white w-96 h-96 rounded-[40px] p-2 mt-10">
+                  transition={{ delay: 3 }}
+                  className="flex w-screen px-20 items-center justify-center text-center gap-20 absolute top-36">
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                  <h1 className="text-white text-8xl font-semibold   whitespace-nowrap">
+                    Correct answer is
+                  </h1>
+                  <div className="bg-white h-1 w-full rounded-full"></div>
+                </motion.div>
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0, display: "none" }}
+                    animate={{ opacity: 1, display: "flex" }}
+                    transition={{ delay: 4, duration: 1 }}
+                    className="absolute z-30 bg-white w-96 h-96 rounded-[40px] p-2 mt-10">
                     <div className=" border-4 border-green-600 w-full h-full rounded-[38px] flex justify-center items-center text-center">
                       <Image
                         src={"/images/full_image.png"}
@@ -166,25 +190,27 @@ export default function LevelTwo({
                         className="self-center"
                       />
                     </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-              <AnimatePresence>
-                <motion.div
-                  initial={{ opacity: 0, display: "none" }}
-                  animate={{ opacity: 1, display: "block" }}
-                  transition={{ delay: 3 }}
-                  className="bg-white w-96 h-96 rounded-[40px] p-2 mt-10 ">
-                  <div className=" border-4 border-green-600 w-full h-full rounded-[38px] flex justify-center items-center text-center">
-                    <Image
-                      src={"/images/half_image.png"}
-                      width={300}
-                      height={300}
-                      alt="level 2 image"
-                      className="self-center"
-                    />
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0, display: "none" }}
+                    animate={{ opacity: 1, display: "flex" }}
+                    transition={{ delay: 3 }}
+                    className="absolute z-20 bg-white w-96 h-96 rounded-[40px] p-2 mt-10">
+                    <div className=" border-4 border-green-600 w-full h-full rounded-[38px] flex justify-center items-center text-center">
+                      <Image
+                        src={"/images/half_image.png"}
+                        width={300}
+                        height={300}
+                        alt="level 2 image"
+                        className="self-center"
+                      />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* <div className="bg-white w-96 h-96 rounded-[40px] p-2 mt-10 "></div> */}
               </AnimatePresence>
             </>
           )}
