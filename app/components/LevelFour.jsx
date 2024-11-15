@@ -72,6 +72,7 @@ export default function LevelFour({
 
   useEffect(() => {
     if (showAnswer) {
+      setShowCorrectAnswerTwo(false); // Show correct answer after 2 seconds
       setShowYouAreCorrect(true); // Show wrong answer
       const timer = setTimeout(() => {
         setShowYouAreCorrect(false); // Hide wrong answer after 2 seconds
@@ -165,7 +166,7 @@ export default function LevelFour({
                               animate="visible"
                               variants={answerVariant}
                               transition={{
-                                delay: index === 0 ? 3 : 3 + index * 1,
+                                delay: 2,
                                 duration: 0.5,
                               }}
                               onAnimationComplete={() => {
