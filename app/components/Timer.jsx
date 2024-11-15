@@ -45,11 +45,11 @@ function Timer({ isActive, onTimeRemainingChange, onTimeFinished, appearDelay })
   return (
     <div
       className="w-[1200px] absolute bottom-10 fade-in " style={{ "--fade-delay": `${appearDelay}s` }}>
-      <div className="w-full border-4 border-white rounded-full p-3">
-        <div className="h-4 w-full bg-green-500 rounded-full overflow-hidden">
+      <div className="w-full border-4 border-red-500 rounded-full p-3">
+        <div className="h-4 w-full bg-red-500 bg-opacity-30 rounded-full overflow-hidden">
           <div
             style={{ width: `${progress}%` }}
-            className="h-full bg-white transition-all duration-100 rounded-full"
+            className="h-full bg-red-500 transition-all duration-100 rounded-full"
           />
         </div>
       </div>
