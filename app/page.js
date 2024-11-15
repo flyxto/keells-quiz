@@ -190,6 +190,7 @@ export default function Page() {
     setSelectedOption("");
     setShowCorrect(false);
     setShowWrong(false);
+    playLock();
   };
 
   const handleNextQuestion = () => {
@@ -235,11 +236,15 @@ export default function Page() {
     const audio = new Audio("/wrong.wav"); // path to your audio file in public folder
     audio.play();
   };
+  const playLock = () => {
+    const audio = new Audio("/lock_option.wav"); // path to your audio file in public folder
+    audio.play();
+  };
   //----------------------
   // useEffect to set isActive to true after 3 seconds when showLevelOne is true
   useEffect(() => {
     let timer;
-    if (showLevelOne) {
+    if (startLevelOne) {
       timer = setTimeout(() => {
         setIsActive(true);
         playAudio();
@@ -249,11 +254,11 @@ export default function Page() {
       setIsActive(false);
     }
     return () => clearTimeout(timer); // Cleanup timeout on unmount or dependency change
-  }, [showLevelOne]);
+  }, [startLevelOne]);
 
   useEffect(() => {
     let timer;
-    if (showLevelThree) {
+    if (startLevelThree) {
       timer = setTimeout(() => {
         setIsActive(true);
         playAudio();
@@ -263,7 +268,7 @@ export default function Page() {
       setIsActive(false);
     }
     return () => clearTimeout(timer); // Cleanup timeout on unmount or dependency change
-  }, [showLevelThree]);
+  }, [startLevelThree]);
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
